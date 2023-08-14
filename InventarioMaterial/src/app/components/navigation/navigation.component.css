@@ -1,0 +1,11 @@
+.title {
+    font-size: 1.5rem;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 5px;
+    margin-right: 1.5rem;
+    
+}
+mat-toolbar {
+    background-color: rgb(27, 36, 167);
+    color: aliceblue;
+}

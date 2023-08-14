@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+# Base de datos para API 
+  mysql:
+    image: mysql:8-oracle
+    container_name: db
+    expose:
+      - 3306
+    ports:
+      - 3306:3306
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 4Vfr7RzpBppAPmjU0cEp
+      MYSQL_DATABASE: inventario
+    volumes:
+      - ./data:/var/lib/mysql

@@ -1,0 +1,138 @@
+<div class="demo-button-container">
+	<button mat-raised-button (click)="addProducto()" class="demo-button">
+		Agregar Producto
+	</button>
+</div>
+
+<div class="busqueda">
+	<mat-form-field>
+		<mat-label>Búsqueda</mat-label>
+		<input
+			matInput
+			(keyup)="applyFilter($event)"
+			placeholder="Ingrese producto a buscar"
+			#input
+		/>
+	</mat-form-field>
+</div>
+
+<div class="mat-elevation-z8">
+	<table
+		mat-table
+		matSort
+		[dataSource]="dataSource"
+		class="mat-elevation-z8"
+	>
+		<ng-container matColumnDef="idproductos">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>ID.</th>
+			<td mat-cell *matCellDef="let element">
+				{{ element.idproductos }}
+			</td>
+		</ng-container>
+		<ng-container matColumnDef="codigobarra">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Código</th>
+			<td mat-cell *matCellDef="let element">
+				{{ element.codigobarra }}
+			</td>
+		</ng-container>
+		<ng-container matColumnDef="nombreproducto">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+			<td mat-cell *matCellDef="let element">
+				{{ element.nombreproducto }}
+			</td>
+		</ng-container>
+
+		<ng-container matColumnDef="descripcion">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>
+				Descripción
+			</th>
+			<td mat-cell *matCellDef="let element">
+				{{ element.descripcion }}
+			</td>
+		</ng-container>
+
+		<ng-container matColumnDef="precioventa">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>
+				Venta $
+			</th>
+			<td mat-cell *matCellDef="let element">
+				{{ element.precioventa }}
+			</td>
+		</ng-container>
+		<ng-container matColumnDef="precioventausd">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>
+				Venta U$D
+			</th>
+			<td mat-cell *matCellDef="let element">
+				{{ element.precioventausd }}
+			</td>
+		</ng-container>
+		<ng-container matColumnDef="preciocompra">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>
+				Compra $
+			</th>
+			<td mat-cell *matCellDef="let element">
+				{{ element.preciocompra }}
+			</td>
+		</ng-container>
+		<ng-container matColumnDef="preciocomprausd">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>
+				Compra U$D
+			</th>
+			<td mat-cell *matCellDef="let element">
+				{{ element.preciocomprausd }}
+			</td>
+		</ng-container>
+
+		<ng-container matColumnDef="existencia">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>
+				Existencia
+			</th>
+			<td mat-cell *matCellDef="let element">
+				{{ element.existencia }}
+			</td>
+		</ng-container>
+
+		<ng-container matColumnDef="acciones">
+			<th mat-header-cell *matHeaderCellDef>Acciones</th>
+			<td mat-cell *matCellDef="let element">
+				<button
+					mat-raised-button
+					color="primary"
+					(click)="editar(element.idproductos, element)"
+				>
+					<mat-icon
+						aria-hidden="false"
+						aria-label="Example home icon"
+						fontIcon="edit_note"
+					></mat-icon>
+				</button>
+				<button
+					mat-raised-button
+					color="warn"
+					(click)="eliminar(element)"
+				>
+					<mat-icon
+						aria-hidden="false"
+						aria-label="Example home icon"
+						fontIcon="delete"
+					></mat-icon>
+				</button>
+			</td>
+		</ng-container>
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+		<tr class="mat-row" *matNoDataRow>
+			<td class="mat-cell" colspan="4">
+				No se encuentran productos conincidentes con el criterio de
+				la búsqueda.. "{{ input.value }}"
+			</td>
+		</tr>
+	</table>
+
+	<mat-paginator
+		[pageSizeOptions]="[5, 10, 25, 100]"
+		aria-label="Seleccione cantidad por página"
+	></mat-paginator>
+</div>
