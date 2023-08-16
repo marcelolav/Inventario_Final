@@ -1,16 +1,36 @@
 version: '3.8'
+
+networks:
+  default:
+
 services:
 # Base de datos para API 
-  mysql:
+  mysql-db:
+    container_name: mysql-db
     image: mysql:8-oracle
-    container_name: db
-    expose:
-      - 3306
-    ports:
-      - 3306:3306
+    # expose:
+    #   - 3306
+    # ports:
+    #   - 3306:3306
     restart: always
+    env_file: ./.env
     environment:
-      MYSQL_ROOT_PASSWORD: 4Vfr7RzpBppAPmjU0cEp
-      MYSQL_DATABASE: inventario
+      MYSQL_ROOT_PASSWORD: $MYSQLDB_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DATABASE
+    ports:
+      - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
       - ./data:/var/lib/mysql
+    networks:
+      - default
+  nest_api:
+    container_name: nest_api
+    build: ./ApiNest
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - $NESTJS_APP_LOCAL_PORT:$NESTJS_APP_DOCKER_PORT
+    stdin_open: true
+    tty: true
+    networks:
+      - default

@@ -28,7 +28,7 @@ import { VentasDetalle } from './ventas-detalle/ventas-detalle.entity';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'mysql-db',
       port: 3306,
       username: 'root',
       password: '4Vfr7RzpBppAPmjU0cEp',
