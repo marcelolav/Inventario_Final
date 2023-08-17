@@ -22,6 +22,8 @@ import { Proveedor } from './proveedores/proveedor.entity';
 import { Rubro } from './rubros/rubro.entity';
 import { VentasCabecera } from './ventas-cabecera/ventas-cabecera.entity';
 import { VentasDetalle } from './ventas-detalle/ventas-detalle.entity';
+import { Productolistaprecios } from './productos/producto.listaprecios.entity';
+import { Productolistafaltantes } from './productos/producto.listafaltantes.entity';
 
 
 @Module({
@@ -42,12 +44,14 @@ import { VentasDetalle } from './ventas-detalle/ventas-detalle.entity';
         ComprasCabecera,
         ComprasDetalle,
         Producto,
+        Productolistaprecios,
+        Productolistafaltantes,
         Proveedor,
         Rubro,
         VentasCabecera,
         VentasDetalle
       ],
-      synchronize: true,
+      synchronize: false,
     }),
     ProductosModule,
     RubrosModule,

@@ -9,7 +9,7 @@ import { Rubro } from '../rubros/rubro.entity';
 
 @Entity({ name: 'productos' })
 export class Producto {
-  @PrimaryGeneratedColumn({ type: 'bigint' })
+  @PrimaryGeneratedColumn({ type: 'int' })
   idproductos: number;
   @Column({ type: 'varchar', length: 60, unique: true, nullable: false })
   codigobarra: string;
@@ -17,13 +17,13 @@ export class Producto {
   nombreproducto: string;
   @Column({ type: 'varchar', length: 250, nullable: false })
   descripcion: string;
-  @Column({type: "decimal", precision: 10, scale: 2, default: 0})
+  @Column({type: "float", precision: 10, scale: 2, default: 0})
   precioventa: number;
-  @Column({type: "decimal", precision: 10, scale: 2, default: 0})
+  @Column({type: "float", precision: 10, scale: 2, default: 0})
   precioventausd: number;
-  @Column({type: "decimal", precision: 10, scale: 2, default: 0})
+  @Column({type: "float", precision: 10, scale: 2, default: 0})
   preciocompra: number;
-  @Column({type: "decimal", precision: 10, scale: 2, default: 0})
+  @Column({type: "float", precision: 10, scale: 2, default: 0})
   preciocomprausd: number;
   @Column({ type: 'int' })
   existencia: number;

@@ -8,7 +8,7 @@ import {
   Delete,
   Patch,
 } from '@nestjs/common';
-import { crearProductoDTO } from './dto/producto.dto';
+import { crearProductoDTO, editarProductoDTO } from './dto/producto.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { ProductosService } from './productos.service';
 
@@ -52,7 +52,7 @@ export class ProductosController {
   @Patch(':id')
   actualizarProducto(
     @Param('id', ParseIntPipe) idproductos: number,
-    @Body() productoActualizado: crearProductoDTO,
+    @Body() productoActualizado: editarProductoDTO,
   ) {
     return this.productoService.actualizarProducto(
       idproductos,

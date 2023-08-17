@@ -1,7 +1,9 @@
 import { IsNumber, IsString } from 'class-validator';
 import { ViewEntity, Column } from 'typeorm';
 
-@ViewEntity({})
+@ViewEntity({
+ 
+})
 export class Productolistafaltantes {
   @Column()
   @IsNumber()

@@ -52,6 +52,7 @@ export class ProductAddModifyComponent implements OnInit {
 	}
 
 	guardarDatos(producto: Producto) {
+		console.log('desde componente dialogo====> producto=', producto)
 		if (producto.idproductos !== undefined) {
 			this.prodserv
 				.updateProduct(producto.idproductos, producto)

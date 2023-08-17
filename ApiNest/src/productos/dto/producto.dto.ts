@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, PartialType } from '@nestjs/swagger';
 import { IsNumber, IsString, Min, MinLength } from 'class-validator';
 
 export class crearProductoDTO {
@@ -45,3 +45,5 @@ export class crearProductoDTO {
   @IsString()
   fotoproducto: string;
 }
+
+export class editarProductoDTO extends PartialType(crearProductoDTO) {}

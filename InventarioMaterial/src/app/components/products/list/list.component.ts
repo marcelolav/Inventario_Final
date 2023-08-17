@@ -23,6 +23,7 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 		'preciocompra',
 		'preciocomprausd',
 		'existencia',
+		'minimo',
 		'acciones',
 	];
 	productos: Producto[] = [];
@@ -52,7 +53,7 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 		};
 		this.dialogConfig = {
 			maxWidth: '60vw',
-			maxHeight: '45vh',
+			maxHeight: '60vh',
 			height: '100%',
 			width: '100%',
 		};
@@ -73,6 +74,7 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 	getproducts() {
 		this.productsService.getProducts().subscribe((res) => {
 			this.dataSource.data = res;
+			console.log('datasource de listcomponent: ', this.dataSource.data);
 			this.dataSource.sort = this.sort;
 		});
 	}
@@ -101,14 +103,17 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 		}
 	}
 	editar(id: number, elemento: Producto) {
+		console.log(elemento)
 		this.dialogConfig.data = elemento;
 		const dialogRef = this.dialog.open(
 			ProductAddModifyComponent,
 			this.dialogConfig
 		);
 		dialogRef.afterClosed().subscribe((result) => {
+			console.log('this.producto =>',this.producto);
+			console.log('id y elemento =>',id, elemento)
 			this.producto = result.data;
-			this.productsService.updateProduct(id, elemento);
+			this.productsService.updateProduct(id, this.producto);
 		});
 	}
 

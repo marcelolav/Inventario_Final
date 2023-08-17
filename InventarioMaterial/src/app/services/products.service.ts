@@ -28,7 +28,8 @@ export class ProductsService {
 	}
 
 	updateProduct(id: number, updatedProducto: Producto): Observable<any> {
-		return this.http.put(`${this.APIURL}/${id}`, updatedProducto);
+		console.log('desde servicio=>>>>', updatedProducto)
+		return this.http.patch(`${this.APIURL}/${id}`, updatedProducto);
 	}
 
 	addProduct(producto: Producto): Observable<any> {

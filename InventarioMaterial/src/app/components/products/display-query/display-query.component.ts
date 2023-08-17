@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Producto } from 'src/app/models/producto';
+import { Producto, ProductoListaPrecios } from 'src/app/models/producto';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -11,17 +11,16 @@ import { ProductsService } from 'src/app/services/products.service';
 	styleUrls: ['./display-query.component.css'],
 })
 export class ProductDisplayQueryComponent implements OnInit, AfterViewInit {
-	productos: Producto[] = [];
+	productos: ProductoListaPrecios[] = [];
 	dataSource = new MatTableDataSource(this.productos);
 	displayedColumns: string[] = [
 		'codigobarra',
 		'nombreproducto',
-		'descripcion',
-		'precio',
-		'preciocompra',
-		'preciorefdolar',
+		'precioventa',
+		'precioventausd',
 		'existencia',
-		'rubro',
+		'minimo',
+		'nombrerubro',
 	];
 
 	@ViewChild(MatPaginator) paginator!: MatPaginator;

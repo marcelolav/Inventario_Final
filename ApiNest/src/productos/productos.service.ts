@@ -2,7 +2,7 @@ import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Producto } from './producto.entity';
-import { crearProductoDTO } from './dto/producto.dto';
+import { crearProductoDTO, editarProductoDTO } from './dto/producto.dto';
 import { Productolistaprecios } from './producto.listaprecios.entity';
 import { Productolistafaltantes } from './producto.listafaltantes.entity';
 
@@ -99,17 +99,9 @@ export class ProductosService {
 
   async actualizarProducto(
     idproductos: number,
-    productoActualizado: crearProductoDTO,
+    productoActualizado: editarProductoDTO,
   ) {
-    const productoEncontrado = await this.productoRepo.findOne({
-      where: { idproductos },
-    });
-    if (!productoEncontrado) {
-      return new HttpException('El producto no existe', HttpStatus.NOT_FOUND);
-    }
-    const actProducto = Object.assign(productoEncontrado, productoActualizado);
-
-    return this.productoRepo.save(actProducto);
+    return this.productoRepo.update(idproductos, productoActualizado);
   }
 
   async actualizarCantidadProducto(idproductos: number, cantidad: number) {

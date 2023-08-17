@@ -56,7 +56,7 @@
 				Venta $
 			</th>
 			<td mat-cell *matCellDef="let element">
-				{{ element.precioventa }}
+				{{ element.precioventa | number : "0.2-2" }}
 			</td>
 		</ng-container>
 		<ng-container matColumnDef="precioventausd">
@@ -64,7 +64,7 @@
 				Venta U$D
 			</th>
 			<td mat-cell *matCellDef="let element">
-				{{ element.precioventausd }}
+				{{ element.precioventausd | number : "0.2-2" }}
 			</td>
 		</ng-container>
 		<ng-container matColumnDef="preciocompra">
@@ -72,7 +72,7 @@
 				Compra $
 			</th>
 			<td mat-cell *matCellDef="let element">
-				{{ element.preciocompra }}
+				{{ element.preciocompra | number : "0.2-2" }}
 			</td>
 		</ng-container>
 		<ng-container matColumnDef="preciocomprausd">
@@ -80,7 +80,7 @@
 				Compra U$D
 			</th>
 			<td mat-cell *matCellDef="let element">
-				{{ element.preciocomprausd }}
+				{{ element.preciocomprausd | number }}
 			</td>
 		</ng-container>
 
@@ -89,7 +89,15 @@
 				Existencia
 			</th>
 			<td mat-cell *matCellDef="let element">
-				{{ element.existencia }}
+				{{ element.existencia | number : "0.2-2"}}
+			</td>
+		</ng-container>
+		<ng-container matColumnDef="minimo">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>
+				Mínimo
+			</th>
+			<td mat-cell *matCellDef="let element">
+				{{ element.minimo | number : "0.2-2"}}
 			</td>
 		</ng-container>
 

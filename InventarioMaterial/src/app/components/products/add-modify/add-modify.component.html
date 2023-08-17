@@ -29,16 +29,12 @@
 	</div>
 	<div layout="row" layout-align="center end">
 		<mat-form-field [style.width.%]="25">
-			<mat-label>Venta U$D</mat-label>
+			<mat-label>Venta $</mat-label>
 			<input matInput [(ngModel)]="data.precioventa" type="number" />
 		</mat-form-field>
 		<mat-form-field [style.width.%]="25">
 			<mat-label>Venta U$D</mat-label>
-			<input
-				matInput
-				[(ngModel)]="data.precioventausd"
-				type="number"
-			/>
+			<input matInput [(ngModel)]="data.precioventausd"/>
 		</mat-form-field>
 		<mat-form-field [style.width.%]="25">
 			<mat-label>Compra $</mat-label>
@@ -46,12 +42,17 @@
 		</mat-form-field>
 		<mat-form-field [style.width.%]="25">
 			<mat-label>Compra U$D</mat-label>
-			<input matInput [(ngModel)]="data.preciocompra" type="number" />
+			<input matInput [(ngModel)]="data.preciocomprausd"  />
 		</mat-form-field>
-
+	</div>
+	<div layout="row" layout-align="center end">
 		<mat-form-field [style.width.%]="25">
 			<mat-label>Existencia</mat-label>
 			<input matInput [(ngModel)]="data.existencia" type="number" />
+		</mat-form-field>
+		<mat-form-field [style.width.%]="25">
+			<mat-label>Mínimo</mat-label>
+			<input matInput [(ngModel)]="data.minimo" type="number" />
 		</mat-form-field>
 	</div>
 </div>

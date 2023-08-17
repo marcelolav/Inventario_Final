@@ -2,12 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Rubro } from '../models/rubro';
 import { Observable } from 'rxjs';
-
+import { environment } from 'src/environment/environment';
 @Injectable({
 	providedIn: 'root',
 })
 export class RubrosService {
-	private APIURL: string = 'http://localhost:3000/rubros';
+	private APIURL: string = environment.API_URI + 'rubros';
 
 	constructor(private http: HttpClient) {}
 
